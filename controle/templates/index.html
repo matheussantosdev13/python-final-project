@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Visitantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.5em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto 20px auto;
+        }
+
+        .overview {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 23%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .card p {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .recent-visitors {
+            margin-top: 30px;
+        }
+
+        .recent-visitors h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        table, th, td {
+            border: none;
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            font-size: 0.95em;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: white;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        tr:hover {
+            background-color: #eaeaea;
+        }
+
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-user-shield"></i>Controle de Visitantes</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Relatórios</a></li>
+                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+         </nav>
+        <div class="header-buttons">
+            <a href="{% url 'registrar_visitante' %}" class="btn">
+                <i class="fas fa-user-plus"></i> Registrar Visitante
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="overview">
+            <div class="card">
+                <h2><i class="fas fa-user-clock"></i> Aguardando Autorização</h2>
+                <p>0</p>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-building"></i> No Condomínio</h2>
+                <p>0</p>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-check-circle"></i> Visitas Finalizadas</h2>
+                <p>0</p>
+            </div>
+            <div class="card">
+                <h2><i class="fas fa-calendar-alt"></i> Registrados no Mês</h2>
+                <p>0</p>
+            </div>
+        </section>
+
+        <section class="recent-visitors">
+            <h2><i class="fas fa-users"></i> Visitantes Recentes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Chegada</th>
+                        <th>Saída</th>
+                        <th>Autorizado Por</th>
+                        <th>Ações</th> 
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for variavel in todos_visitantes %}
+                    <tr>
+                        <td>{{ variavel.nome_completo }}</td>
+                        <td>{{ variavel.cpf }}</td>
+                        <td>{{ variavel.horario_chegada }}</td>
+                        <td>{{ variavel.horario_saida }}</td>
+                        <td>{{ variavel.morador_responsavel }}</td>
+                        <td>
+                            <a href="{% url 'informacoes_visitante' variavel.id %}">
+                                Ver informações
+                            </a>
+                            
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+        
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Controle de Visitantes. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

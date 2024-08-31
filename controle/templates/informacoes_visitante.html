@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Visitantes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.5em;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ffdd57;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 80px auto 20px auto;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5em;
+            font-weight: 600;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+        }
+
+        input[type="datetime-local"] {
+            padding: 8px;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 40px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-user-plus"></i> Cadastro de Visitantes</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Controle de Visitantes</a></li>
+                <li><a href="#">Relatórios</a></li>
+                <li><a href="#">Configurações</a></li>
+                <li><a href="#">Sair</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="form-container">
+            <h2><i class="fas fa-user-plus"></i> Informações do Visitante</h2>
+            <form>
+                <label for="horario-chegada">Horário de Chegada</label>
+                <input type="datetime-local" id="horario-chegada" name="horario-chegada" value="{{visitante.horario_chegada}}" required>
+
+                <label for="numero-casa">Número da Casa a Ser Visitada</label>
+                <input type="text" id="numero-casa" name="numero-casa" value="{{visitante.numero_casa}}" required>
+
+                <label for="horario-autorizacao">Horário de Autorização de Entrada </label>
+                <input type="datetime-local" id="horario-autorizacao" name="horario-autorizacao" value="{{visitante.horario_autorizacao}}" required>
+
+                <label for="autorizado-por">Entrada Autorizada Por</label>
+                <input type="text" id="autorizado-por" name="autorizado-por" value="{{visitante.registrado_por}}" required>
+
+                <label for="horario-saida">Horário de Saída</label>
+                <input type="datetime-local" id="horario-saida" name="horario-saida" value="{{visitante.get_horario_saida}}" required>
+
+                <label for="nome-completo">Nome Completo</label>
+                <input type="text" id="nome-completo" name="nome-completo" value="{{visitante.nome_completo}}" required>
+
+                <label for="cpf">CPF</label>
+                <input type="text" id="cpf" name="cpf" value="{{visitante.cpf}}" required>
+
+                <label for="data-nascimento">Data de Nascimento</label>
+                <input type="date" id="data-nascimento" name="data-nascimento" value="{{visitante.data_nascimento}}" required>
+
+                <label for="placa-veiculo">Placa do Veículo</label>
+                <input type="text" id="placa-veiculo" name="placa-veiculo" value="{{visitante.placa_veiculo}}" required>
+
+                <label for="visitante-registrado-em">Visitante Registrado Em</label>
+                <input type="text" id="visitante-registrado-em" name="visitante-registrado-em" required>
+
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Controle de Visitantes. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
