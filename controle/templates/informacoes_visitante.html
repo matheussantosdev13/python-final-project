@@ -114,9 +114,6 @@
             text-align: center;
             padding: 15px 0;
             margin-top: 40px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
@@ -140,31 +137,31 @@
             <h2><i class="fas fa-user-plus"></i> Informações do Visitante</h2>
             <form>
                 <label for="horario-chegada">Horário de Chegada</label>
-                <input type="datetime-local" id="horario-chegada" name="horario-chegada" value="{{visitante.horario_chegada}}" required>
+                <input type="datetime-local" id="horario-chegada" name="horario-chegada" required>
 
                 <label for="numero-casa">Número da Casa a Ser Visitada</label>
-                <input type="text" id="numero-casa" name="numero-casa" value="{{visitante.numero_casa}}" required>
+                <input type="text" id="numero-casa" name="numero-casa" required>
 
-                <label for="horario-autorizacao">Horário de Autorização de Entrada </label>
-                <input type="datetime-local" id="horario-autorizacao" name="horario-autorizacao" value="{{visitante.horario_autorizacao}}" required>
+                <label for="horario-autorizacao">Horário de Autorização de Entrada</label>
+                <input type="datetime-local" id="horario-autorizacao" name="horario-autorizacao" required>
 
                 <label for="autorizado-por">Entrada Autorizada Por</label>
-                <input type="text" id="autorizado-por" name="autorizado-por" value="{{visitante.registrado_por}}" required>
+                <input type="text" id="autorizado-por" name="autorizado-por" required>
 
                 <label for="horario-saida">Horário de Saída</label>
-                <input type="datetime-local" id="horario-saida" name="horario-saida" value="{{visitante.get_horario_saida}}" required>
+                <input type="datetime-local" id="horario-saida" name="horario-saida" required>
 
                 <label for="nome-completo">Nome Completo</label>
-                <input type="text" id="nome-completo" name="nome-completo" value="{{visitante.nome_completo}}" required>
+                <input type="text" id="nome-completo" name="nome-completo" required>
 
                 <label for="cpf">CPF</label>
-                <input type="text" id="cpf" name="cpf" value="{{visitante.cpf}}" required>
+                <input type="text" id="cpf" name="cpf" required>
 
                 <label for="data-nascimento">Data de Nascimento</label>
-                <input type="date" id="data-nascimento" name="data-nascimento" value="{{visitante.data_nascimento}}" required>
+                <input type="date" id="data-nascimento" name="data-nascimento" required>
 
                 <label for="placa-veiculo">Placa do Veículo</label>
-                <input type="text" id="placa-veiculo" name="placa-veiculo" value="{{visitante.placa_veiculo}}" required>
+                <input type="text" id="placa-veiculo" name="placa-veiculo" required>
 
                 <label for="visitante-registrado-em">Visitante Registrado Em</label>
                 <input type="text" id="visitante-registrado-em" name="visitante-registrado-em" required>

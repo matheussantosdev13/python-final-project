@@ -6,8 +6,6 @@
     <title>Controle de Visitantes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-
-
         * {
             margin: 0;
             padding: 0;
@@ -148,11 +146,26 @@
             width: 100%;
             box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
         }
+
+        .header-buttons .btn {
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .header-buttons .btn:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1><i class="fas fa-user-shield"></i>Controle de Visitantes</h1>
+        <h1><i class="fas fa-user-shield"></i> Controle de Visitantes</h1>
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
@@ -213,7 +226,6 @@
                             <a href="{% url 'informacoes_visitante' variavel.id %}">
                                 Ver informações
                             </a>
-                            
                         </td>
                     </tr>
                     {% endfor %}
